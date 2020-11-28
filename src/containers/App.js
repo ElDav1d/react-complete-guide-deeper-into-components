@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Validation from '../components/Validation/Validation'
-import Char from '../components/Char/Char'
+import Chars from '../components/Chars/Chars'
 
 class App extends Component {
   state = {
@@ -22,18 +22,13 @@ class App extends Component {
   render() {
     let list = null;
 
-    const listContent = (
-      <ul>
-        {this.state.inputString.split('').map((item, index) => {
-          return <Char
-            char={item}
-            click={() => this.deleteCharHandler(index)}
-            key={index} />
-        })}
-      </ul>
-    )
-
-    if (this.state.inputString.length) { list = listContent }
+    if (this.state.inputString.length) { 
+      list =
+        <Chars 
+          chars={this.state.inputString}
+          clicked={this.deleteCharHandler}
+        />
+    }
 
     const textLength = this.state.inputString.length;
     return (

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Validation from './Validation/Validation.js'
-import Char from './Char/Char.js'
+import Validation from '../components/Validation/Validation'
+import Char from '../components/Char/Char'
 
 class App extends Component {
   state = {

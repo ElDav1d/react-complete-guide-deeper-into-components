@@ -1,4 +1,4 @@
-# DEEPERE INTO COMPONENTS EXERCISE
+# DEEPER INTO COMPONENTS EXERCISE
 
 Practicing concepts of REACT-COMPLETE-GUIDE's Section 7:Diving Deeper into Components & React
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Validation from '../components/Validation/Validation'
 import Chars from '../components/Chars/Chars'
 
@@ -32,10 +32,10 @@ class App extends Component {
 
     const textLength = this.state.inputString.length;
     return (
-      <div className="App">
+      <div className={classes.App}>
         <h1>LET'S GO</h1>
         <form>
-          <label className="App-input">Write some text bellow</label>
+          <label className={classes.AppInput}>Write some text bellow</label>
           <input
             onChange={this.textChangeHandler}
             type="text"

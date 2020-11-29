@@ -13,7 +13,8 @@ const char = (props) => {
   return (
     <li
       onClick={props.click}
-      style={style}>{props.char}</li>
+      style={style}>{props.char}
+    </li>
   )
 };
 

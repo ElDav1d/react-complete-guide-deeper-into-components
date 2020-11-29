@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import classes from './App.css';
 import Validation from '../components/Validation/Validation'
 import Chars from '../components/Chars/Chars'
-import ClearContext from '../context/clear-context';
-import clearContext from '../context/clear-context';
+import PseudoStoreContext from '../context/pseudo-store-context';
 
 class App extends Component {
   state = {
-    inputString: ''
+    inputString: '',
+    savedStrings: []
   }
   
   textChangeHandler = (event) => {
@@ -24,23 +24,35 @@ class App extends Component {
   clearHandler = () => {
     this.setState({inputString:''});
   }
-  
+
+  saveHandler = () => {
+    const newSavedStrings = this.state.savedStrings;
+    newSavedStrings.push(this.state.inputString);
+    this.setState({
+      inputString: '',
+      savedStrings: newSavedStrings
+    })
+    console.log(this.state.savedStrings)
+  }
+
   render() {
     let list = null;
 
     if (this.state.inputString.length) { 
       list =
-      <ClearContext.Provider
+      <PseudoStoreContext.Provider
         value={{
           inputString: this.state.inputString,
-          clear: this.clearHandler
+          savedStrings: this.state.savedStrings,
+          clear: this.clearHandler,
+          save: this.saveHandler
         }}
       >
         <Chars 
           chars={this.state.inputString}
           clicked={this.deleteCharHandler}
         />
-      </ClearContext.Provider>
+      </PseudoStoreContext.Provider>
     }
 
     const textLength = this.state.inputString.length;

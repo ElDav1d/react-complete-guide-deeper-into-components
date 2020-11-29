@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import ClearContext from '../../../context/clear-context'
+import PseudoStoreContext from '../../../context/pseudo-store-context'
 
 const charControls = props => {
   const styleContainer = {
@@ -22,19 +22,19 @@ const charControls = props => {
     backgroundColor: 'red'
   }
 
-  const clearContext = (useContext(ClearContext));
+  const pseudoStoreContext = (useContext(PseudoStoreContext));
 
   return (
     <div style={styleContainer}>
       <button
         style={{...styleButton, ...styleButtonGreen}}
-        onClick={props.clickSave}
+        onClick={pseudoStoreContext.save}
         >
           SAVE ITEM
       </button>
       <button
         style={{...styleButton, ...styleButtonRed}}
-        onClick={clearContext.clear}
+        onClick={pseudoStoreContext.clear}
         >
           CLEAR LIST
         </button>

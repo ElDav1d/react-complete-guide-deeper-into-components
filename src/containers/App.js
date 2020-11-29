@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import classes from './App.css';
 import Validation from '../components/Validation/Validation'
 import Chars from '../components/Chars/Chars'
+import ClearContext from '../context/clear-context';
+import clearContext from '../context/clear-context';
 
 class App extends Component {
   state = {
@@ -18,16 +20,27 @@ class App extends Component {
     newTextArray.splice(charIndex, 1);
     this.setState({inputString: newTextArray.join('')})
   }
+
+  clearHandler = () => {
+    this.setState({inputString:''});
+  }
   
   render() {
     let list = null;
 
     if (this.state.inputString.length) { 
       list =
+      <ClearContext.Provider
+        value={{
+          inputString: this.state.inputString,
+          clear: this.clearHandler
+        }}
+      >
         <Chars 
           chars={this.state.inputString}
           clicked={this.deleteCharHandler}
         />
+      </ClearContext.Provider>
     }
 
     const textLength = this.state.inputString.length;

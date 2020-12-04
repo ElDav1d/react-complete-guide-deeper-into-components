@@ -13,7 +13,7 @@ class Chars extends PureComponent {
             return (
             <Char
               char={char}
-              click={() => this.clicked(index)}
+              click={() => this.props.clicked(index)}
               key={index} />
               )
           })

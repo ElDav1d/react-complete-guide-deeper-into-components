@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import Validation from '../components/Validation/Validation'
-import Chars from '../components/Chars/Chars'
+import Validation from '../components/Validation/Validation';
+import Chars from '../components/Chars/Chars';
+import Strings from '../components/Strings/Strings';
 import PseudoStoreContext from '../context/pseudo-store-context';
 
 class App extends Component {
@@ -36,10 +37,11 @@ class App extends Component {
   }
 
   render() {
-    let list = null;
+    let charList = null;
+    let stringList = null;
 
     if (this.state.inputString.length) { 
-      list =
+      charList =
       <PseudoStoreContext.Provider
         value={{
           inputString: this.state.inputString,
@@ -53,6 +55,13 @@ class App extends Component {
           clicked={this.deleteCharHandler}
         />
       </PseudoStoreContext.Provider>
+    }
+
+    if (this.state.savedStrings.length) {
+      stringList =
+        <Strings
+          strings={this.state.savedStrings}
+        />
     }
 
     const textLength = this.state.inputString.length;
@@ -71,7 +80,8 @@ class App extends Component {
         </h3> 
         <Validation 
           textLength={textLength}/>
-        {list}
+        {charList}
+        {stringList}
       </div>
     );
   }

@@ -11,11 +11,12 @@ class Chars extends PureComponent {
         {
           this.props.chars.split('').map((char, index) => {
             return (
-            <Char
-              char={char}
-              click={() => this.props.clicked(index)}
-              key={index} />
-              )
+              <Char
+                char={char}
+                click={() => this.props.clicked(index)}
+                key={index}
+              />
+            )
           })
         }
         <CharsControls />

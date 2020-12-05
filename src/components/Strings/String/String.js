@@ -1,18 +1,11 @@
 import React from 'react';
+import { StyledLi } from '../../../styles/styles';
 
-const string = (props) => {
-  const style = {
-    display: 'inline-block',
-    padding: '1rem',
-    textAlign: 'center',
-    margin: '1rem',
-    border: '1px solid black'
-  }
-  
+const string = (props) => {  
   return (
-    <li
-      style={style}>{props.string}
-    </li>
+    <StyledLi>
+      {props.string}
+    </StyledLi>
   )
 };
 

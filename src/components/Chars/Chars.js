@@ -8,6 +8,7 @@ class Chars extends PureComponent {
   render() {
     return (
       <React.Fragment>
+        <h2>Your input</h2>
         {
           this.props.chars.split('').map((char, index) => {
             return (

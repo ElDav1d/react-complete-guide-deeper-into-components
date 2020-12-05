@@ -1,19 +1,33 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+import ShowStringsButton from './ShowStringsButton/ShowStringsButton';
 import String from  './String/String';
 import withMaterialUl from '../../hoc/withMaterialUl';
 import classes from '../../containers/App.css';
+import PseudoStoreContext from '../../context/pseudo-store-context';
 
-class Strings extends Component {
+class Strings extends PureComponent {
+  static contextType = PseudoStoreContext;
+
   render() {
+    let stringsList = null;
+    if (this.context.showStrings) {
+      stringsList =
+        this.context.savedStrings.map((string, index) => {
+          return (
+            <String
+              string={string}
+              key={index}
+            />
+          )
+        })
+    }
+
     return (
-      this.props.strings.map((string, index) => {
-        return (
-          <String
-            string={string}
-            key={index}
-          />
-        )
-      })
+      <React.Fragment>
+        <h2>Your saved strings</h2>
+        {stringsList}
+        <ShowStringsButton />
+      </React.Fragment>
     )
   }
 }

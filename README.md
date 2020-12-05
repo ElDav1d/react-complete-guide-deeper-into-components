@@ -7,9 +7,11 @@ Practicing concepts of REACT-COMPLETE-GUIDE's Section 7:Diving Deeper into Compo
 - More granular project approach: char list, input... E.G.
 - Add clear button to char list
 - Save inputs in state
+- Display saved inputs
+- Delete inputs
 - Optimize performance with lifecycles and hooks
 - Use context to avoid long prop chains
-
+- Use refs to focus on inputs and/or buttons.
 
 ## Getting Started with Create React App
 

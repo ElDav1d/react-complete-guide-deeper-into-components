@@ -1,19 +1,12 @@
 import React from 'react';
+import { StyledLi } from '../../../styles/styles';
 
 const char = (props) => {
-  const style = {
-    display: 'inline-block',
-    padding: '1rem',
-    textAlign: 'center',
-    margin: '1rem',
-    border: '1px solid black'
-  }
-  
   return (
-    <li
-      onClick={props.click}
-      style={style}>{props.char}
-    </li>
+    <StyledLi
+      onClick={props.click}>
+        {props.char}
+    </StyledLi>
   )
 };
 

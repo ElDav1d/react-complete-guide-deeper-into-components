@@ -8,7 +8,8 @@ import PseudoStoreContext from '../context/pseudo-store-context';
 class App extends Component {
   state = {
     inputString: '',
-    savedStrings: []
+    savedStrings: [],
+    showStrings: false
   }
   
   textChangeHandler = (event) => {
@@ -33,7 +34,13 @@ class App extends Component {
       inputString: '',
       savedStrings: newSavedStrings
     })
-    console.log(this.state.savedStrings)
+  }
+
+  showStringsHandler = () => {
+    const show = !this.state.showStrings;
+    this.setState({
+      showStrings: show
+    })
   }
 
   render() {
@@ -42,26 +49,15 @@ class App extends Component {
 
     if (this.state.inputString.length) { 
       charList =
-      <PseudoStoreContext.Provider
-        value={{
-          inputString: this.state.inputString,
-          savedStrings: this.state.savedStrings,
-          clear: this.clearHandler,
-          save: this.saveHandler
-        }}
-      >
         <Chars 
           chars={this.state.inputString}
           clicked={this.deleteCharHandler}
         />
-      </PseudoStoreContext.Provider>
     }
 
     if (this.state.savedStrings.length) {
       stringList =
-        <Strings
-          strings={this.state.savedStrings}
-        />
+        <Strings/>
     }
 
     const textLength = this.state.inputString.length;
@@ -80,8 +76,19 @@ class App extends Component {
         </h3> 
         <Validation 
           textLength={textLength}/>
-        {charList}
-        {stringList}
+        <PseudoStoreContext.Provider
+          value={{
+            inputString: this.state.inputString,
+            savedStrings: this.state.savedStrings,
+            showStrings: this.state.showStrings,
+            clear: this.clearHandler,
+            save: this.saveHandler,
+            show: this.showStringsHandler
+          }}
+        >
+          {charList}
+          {stringList}
+        </PseudoStoreContext.Provider>
       </div>
     );
   }

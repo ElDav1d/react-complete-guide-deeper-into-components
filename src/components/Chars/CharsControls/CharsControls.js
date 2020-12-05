@@ -11,7 +11,10 @@ const charControls = props => {
   
   const styleButton = {
     padding: '.5rem',
-    color: 'white'
+    color: 'white',
+    border: 'none',
+    borderRadius: '3px',
+    boxShadow: '0px 3px 7px rgba(0, 0, 0, 0.5)'
   }
 
   const styleButtonGreen = {

@@ -6,10 +6,19 @@ import Strings from '../components/Strings/Strings';
 import PseudoStoreContext from '../context/pseudo-store-context';
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.inputElementRef = React.createRef();
+  }
+
   state = {
     inputString: '',
     savedStrings: [],
     showStrings: false
+  }
+  
+  componentDidMount() {
+    this.inputElementRef.current.focus();
   }
 
   textChangeHandler = (event) => {
@@ -57,6 +66,7 @@ class App extends Component {
         <form>
           <label className={classes.AppInput}>Write some text bellow</label>
           <input
+            ref={this.inputElementRef}
             onChange={this.textChangeHandler}
             type="text"
             value={this.state.inputString}/>

@@ -1,35 +1,27 @@
 import React, { Component } from 'react';
 import classes from './App.css';
+import UserInputForm from '../components/UserInputForm/UserInputForm';
 import Validation from '../components/Validation/Validation';
 import Chars from '../components/Chars/Chars';
 import Strings from '../components/Strings/Strings';
 import PseudoStoreContext from '../context/pseudo-store-context';
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-    this.inputElementRef = React.createRef();
-  }
-
   state = {
-    inputString: '',
+    userInput: '',
     savedStrings: [],
     showStrings: false
   }
-  
-  componentDidMount() {
-    this.inputElementRef.current.focus();
-  }
 
-  textChangeHandler = (event) => {
-    const textNew= event.target.value;
-    this.setState({inputString: textNew});
+  inputChangeHandler = (event) => {
+    const newInput= event.target.value;
+    this.setState({userInput: newInput});
   }
 
   deleteCharHandler = (charIndex) => {
-    const newTextArray = this.state.inputString.split('');
+    const newTextArray = this.state.userInput.split('');
     newTextArray.splice(charIndex, 1);
-    this.setState({inputString: newTextArray.join('')})
+    this.setState({userInput: newTextArray.join('')})
   }
 
   deleteStringHandler = (stringIndex) => {
@@ -39,14 +31,14 @@ class App extends Component {
   }
 
   clearInputHandler = () => {
-    this.setState({inputString:''});
+    this.setState({userInput:''});
   }
 
   saveInputHandler = () => {
     const newSavedStrings = this.state.savedStrings;
-    newSavedStrings.push(this.state.inputString);
+    newSavedStrings.push(this.state.userInput);
     this.setState({
-      inputString: '',
+      userInput: '',
       savedStrings: newSavedStrings
     })
   }
@@ -57,41 +49,35 @@ class App extends Component {
   }
 
   render() {
-    const textLength = this.state.inputString.length;
+    const textLength = this.state.userInput.length;
     const stringsLength = this.state.savedStrings.length;
 
     return (
-      <div className={classes.App}>
-        <h1>LET'S GO</h1>
-        <form>
-          <label className={classes.AppInput}>Write some text bellow</label>
-          <input
-            ref={this.inputElementRef}
-            onChange={this.textChangeHandler}
-            type="text"
-            value={this.state.inputString}/>
-        </form>
-        <h3>
-          Text's length is {textLength}
-        </h3> 
-        <Validation 
-          textLength={textLength}/>
-        <PseudoStoreContext.Provider
-          value={{
-            inputString: this.state.inputString,
-            savedStrings: this.state.savedStrings,
-            showStrings: this.state.showStrings,
-            clearInput: this.clearInputHandler,
-            saveInput: this.saveInputHandler,
-            showSavedStrings: this.showSavedStringsHandler,
-            deleteChar: this.deleteCharHandler,
-            deleteString: this.deleteStringHandler
-          }}
-        >
-        {textLength ? <Chars /> : null}
-        {stringsLength ? <Strings /> : null}
-        </PseudoStoreContext.Provider>
-      </div>
+      <PseudoStoreContext.Provider
+        value={{
+          userInput: this.state.userInput,
+          savedStrings: this.state.savedStrings,
+          showStrings: this.state.showStrings,
+          inputChange: this.inputChangeHandler,
+          clearInput: this.clearInputHandler,
+          saveInput: this.saveInputHandler,
+          showSavedStrings: this.showSavedStringsHandler,
+          deleteChar: this.deleteCharHandler,
+          deleteString: this.deleteStringHandler
+        }}
+      >
+        <div className={classes.App}>
+          <h1>LET'S GO</h1>
+          <UserInputForm />
+          <h3>
+            Text's length is {textLength}
+          </h3> 
+          <Validation 
+            textLength={textLength}/>
+            {textLength ? <Chars /> : null}
+            {stringsLength ? <Strings /> : null}
+        </div>
+      </PseudoStoreContext.Provider>
     );
   }
 }

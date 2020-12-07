@@ -1,6 +1,6 @@
 # DEEPER INTO COMPONENTS EXERCISE
 
-Practicing concepts of REACT-COMPLETE-GUIDE's Section 7:Diving Deeper into Components & React
+Practicing concepts of REACT-COMPLETE-GUIDE's Section 7:Diving Deeper into Components & React. Mainly Context API, React Hooks, Lifecycle Hooks and refs.
 
 ## REQUIREMENTS
 

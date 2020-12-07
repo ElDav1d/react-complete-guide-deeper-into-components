@@ -13,7 +13,7 @@ class Chars extends PureComponent {
       <React.Fragment>
         <h2>Your input</h2>
         {
-          this.context.inputString.split('').map((char, index) => {
+          this.context.userInput.split('').map((char, index) => {
             return (
               <Char
                 char={char}

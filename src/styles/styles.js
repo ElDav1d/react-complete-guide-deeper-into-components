@@ -19,3 +19,8 @@ export const StyledButton = styled.button`
   box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.5);
   background-color: ${props => props.backgroundColor ? 'red' : 'green'}
 `;
+
+export const StyledLabel = styled.label`
+  display: block;
+  margin-bottom: 1rem;
+`

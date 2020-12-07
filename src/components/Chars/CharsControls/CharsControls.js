@@ -1,47 +1,27 @@
 import React, {useContext} from 'react';
-import PseudoStoreContext from '../../../context/pseudo-store-context'
+import PseudoStoreContext from '../../../context/pseudo-store-context';
+import { StyledButton, StyledControlsContainer } from '../../../styles/styles';
 
 const charControls = props => {
-  const styleContainer = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    width: '15rem',
-    margin: 'auto',
-  }
-  
-  const styleButton = {
-    padding: '.5rem',
-    color: 'white',
-    border: 'none',
-    borderRadius: '3px',
-    boxShadow: '0px 3px 7px rgba(0, 0, 0, 0.5)'
-  }
-
-  const styleButtonGreen = {
-    backgroundColor: 'green'
-  }
-
-  const styleButtonRed  = {
-    backgroundColor: 'red'
-  }
-
   const pseudoStoreContext = (useContext(PseudoStoreContext));
+  const save = false;
+  const clear = true;
 
   return (
-    <div style={styleContainer}>
-      <button
-        style={{...styleButton, ...styleButtonGreen}}
+    <StyledControlsContainer>
+      <StyledButton
         onClick={pseudoStoreContext.saveInput}
+        backgroundColor={save}
         >
           SAVE ITEM
-      </button>
-      <button
-        style={{...styleButton, ...styleButtonRed}}
+      </StyledButton>
+      <StyledButton
         onClick={pseudoStoreContext.clearInput}
+        backgroundColor={clear}
         >
           CLEAR LIST
-        </button>
-    </div>
+      </StyledButton>
+    </StyledControlsContainer>
   )
 }
 

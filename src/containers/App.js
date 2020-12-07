@@ -11,7 +11,7 @@ class App extends Component {
     savedStrings: [],
     showStrings: false
   }
-  
+
   textChangeHandler = (event) => {
     const textNew= event.target.value;
     this.setState({inputString: textNew});
@@ -23,11 +23,17 @@ class App extends Component {
     this.setState({inputString: newTextArray.join('')})
   }
 
-  clearHandler = () => {
+  deleteStringHandler = (stringIndex) => {
+    const newStringsArray = this.state.savedStrings;
+    newStringsArray.splice(stringIndex, 1);
+    this.setState({savedStrings: newStringsArray})
+  }
+
+  clearInputHandler = () => {
     this.setState({inputString:''});
   }
 
-  saveHandler = () => {
+  saveInputHandler = () => {
     const newSavedStrings = this.state.savedStrings;
     newSavedStrings.push(this.state.inputString);
     this.setState({
@@ -36,31 +42,15 @@ class App extends Component {
     })
   }
 
-  showStringsHandler = () => {
+  showSavedStringsHandler = () => {
     const show = !this.state.showStrings;
-    this.setState({
-      showStrings: show
-    })
+    this.setState({showStrings: show})
   }
 
   render() {
-    let charList = null;
-    let stringList = null;
-
-    if (this.state.inputString.length) { 
-      charList =
-        <Chars 
-          chars={this.state.inputString}
-          clicked={this.deleteCharHandler}
-        />
-    }
-
-    if (this.state.savedStrings.length) {
-      stringList =
-        <Strings/>
-    }
-
     const textLength = this.state.inputString.length;
+    const stringsLength = this.state.savedStrings.length;
+
     return (
       <div className={classes.App}>
         <h1>LET'S GO</h1>
@@ -81,13 +71,15 @@ class App extends Component {
             inputString: this.state.inputString,
             savedStrings: this.state.savedStrings,
             showStrings: this.state.showStrings,
-            clear: this.clearHandler,
-            save: this.saveHandler,
-            show: this.showStringsHandler
+            clearInput: this.clearInputHandler,
+            saveInput: this.saveInputHandler,
+            showSavedStrings: this.showSavedStringsHandler,
+            deleteChar: this.deleteCharHandler,
+            deleteString: this.deleteStringHandler
           }}
         >
-          {charList}
-          {stringList}
+        {textLength ? <Chars /> : null}
+        {stringsLength ? <Strings /> : null}
         </PseudoStoreContext.Provider>
       </div>
     );

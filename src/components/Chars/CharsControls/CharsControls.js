@@ -31,13 +31,13 @@ const charControls = props => {
     <div style={styleContainer}>
       <button
         style={{...styleButton, ...styleButtonGreen}}
-        onClick={pseudoStoreContext.save}
+        onClick={pseudoStoreContext.saveInput}
         >
           SAVE ITEM
       </button>
       <button
         style={{...styleButton, ...styleButtonRed}}
-        onClick={pseudoStoreContext.clear}
+        onClick={pseudoStoreContext.clearInput}
         >
           CLEAR LIST
         </button>

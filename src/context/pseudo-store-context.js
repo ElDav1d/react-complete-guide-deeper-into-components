@@ -4,9 +4,11 @@ const pseudoStoreContext = React.createContext({
   inputString: '',
   savedStrings: [],
   showStrings: false,
-  clear: () => {},
-  save: () => {},
-  show: () => {}
+  clearInput: () => {},
+  saveInput: () => {},
+  showSavedStrings: () => {},
+  deleteChar: () => {},
+  deleteString: () => {},
 })
 
 export default pseudoStoreContext;

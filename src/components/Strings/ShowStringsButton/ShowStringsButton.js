@@ -11,8 +11,8 @@ const showStringsButton = () => {
 
   return (
     <StyledButton
-      onClick={pseudoStoreContext.show}
-      backgroundColor={pseudoStoreContext.showStrings}
+      onClick={pseudoStoreContext.showSavedStrings}
+      backgroundColor={showStrings}
       >
         {buttonText}
     </StyledButton>

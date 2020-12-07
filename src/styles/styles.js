@@ -18,4 +18,4 @@ export const StyledButton = styled.button`
   border-radius: 3px;
   box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.5);
   background-color: ${props => props.backgroundColor ? 'red' : 'green'}
-  `
+`;

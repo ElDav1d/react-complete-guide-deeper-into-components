@@ -6,9 +6,7 @@ const userInputForm = () => {
   const inputFocusRef = useRef(null);
   const pseudoStoreContext = (useContext(PseudoStoreContext));
 
-  console.log('Form Render');
   useEffect(() => {
-    console.log('UseEffect at Form')
     inputFocusRef.current.focus();
   },[])
 

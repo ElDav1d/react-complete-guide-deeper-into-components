@@ -44,8 +44,9 @@ class App extends Component {
   }
 
   showSavedStringsHandler = () => {
-    const show = !this.state.showStrings;
-    this.setState({showStrings: show})
+    this.setState((prevState) => {
+      return {showStrings: !prevState.showStrings}
+    })
   }
 
   render() {

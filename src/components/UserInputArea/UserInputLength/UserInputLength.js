@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import PseudoStoreContext from '../../../context/pseudo-store-context';
+import Context from '../../../context/context';
 
 const UserInputLength = () => {
-  const pseudoStoreContext = (useContext(PseudoStoreContext));
+  const context = (useContext(Context));
   return (
   <h3>
-    Text's length is {pseudoStoreContext.userInput.length}
+    Text's length is {context.userInput.length}
   </h3> 
   );
 };

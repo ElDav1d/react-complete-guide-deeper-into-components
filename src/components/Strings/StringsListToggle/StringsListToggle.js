@@ -1,17 +1,17 @@
 import React, { useContext } from 'react';
-import PseudoStoreContext from '../../../context/pseudo-store-context';
+import Context from '../../../context/context';
 import { StyledButton } from '../../../styles/styles';
 
 const showStringsButton = () => {
-  const pseudoStoreContext = (useContext(PseudoStoreContext));
-  const showStrings = pseudoStoreContext.showStrings;
+  const context = (useContext(Context));
+  const showStrings = context.showStrings;
 
   let buttonText = 'Show';
   if (showStrings) {buttonText = 'Hide'};
 
   return (
     <StyledButton
-      onClick={pseudoStoreContext.showSavedStrings}
+      onClick={context.showSavedStrings}
       backgroundColor={showStrings}
       >
         {buttonText}

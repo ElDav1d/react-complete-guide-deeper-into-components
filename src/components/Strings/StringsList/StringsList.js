@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
-import PseudoStoreContext from '../../../context/pseudo-store-context';
+import Context from '../../../context/context';
 import String from './String/String';
 
 const stringsList = () => {
-  const pseudoStoreContext = (useContext(PseudoStoreContext));
+  const context = (useContext(Context));
   return (
     <ul>
       {
-        pseudoStoreContext.savedStrings.map((string, index) => {
+        context.savedStrings.map((string, index) => {
           return (
             <String
               string={string}

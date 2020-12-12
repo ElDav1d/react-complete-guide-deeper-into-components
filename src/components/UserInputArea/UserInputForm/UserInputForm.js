@@ -1,10 +1,10 @@
 import React, { useEffect, useContext, useRef } from 'react';
 import { StyledLabel } from '../../../styles/styles';
-import PseudoStoreContext from '../../../context/pseudo-store-context';
+import Context from '../../../context/context';
  
 const userInputForm = () => {
   const inputFocusRef = useRef(null);
-  const pseudoStoreContext = (useContext(PseudoStoreContext));
+  const context = (useContext(Context));
 
   useEffect(() => {
     inputFocusRef.current.focus();
@@ -18,8 +18,8 @@ const userInputForm = () => {
       <input
         type="text"
         ref={inputFocusRef}
-        onChange={pseudoStoreContext.inputChange}
-        value={pseudoStoreContext.userInput}
+        onChange={context.inputChange}
+        value={context.userInput}
       />
     </form>
   );

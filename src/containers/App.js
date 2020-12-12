@@ -3,7 +3,7 @@ import classes from './App.css';
 import UserInputArea from '../components/UserInputArea/UserInputArea';
 import Chars from '../components/Chars/Chars';
 import Strings from '../components/Strings/Strings';
-import PseudoStoreContext from '../context/pseudo-store-context';
+import Context from '../context/context';
 
 class App extends Component {
   state = {
@@ -57,7 +57,7 @@ class App extends Component {
     const stringsLength = this.state.savedStrings.length;
 
     return (
-      <PseudoStoreContext.Provider
+      <Context.Provider
         value={{
           userInput: this.state.userInput,
           savedStrings: this.state.savedStrings,
@@ -76,7 +76,7 @@ class App extends Component {
           {textLength ? <Chars /> : null}
           {stringsLength ? <Strings /> : null}
         </div>
-      </PseudoStoreContext.Provider>
+      </Context.Provider>
     );
   }
 }

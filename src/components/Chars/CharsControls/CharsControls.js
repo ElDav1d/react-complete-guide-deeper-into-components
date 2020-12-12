@@ -1,22 +1,22 @@
 import React, {useContext} from 'react';
-import PseudoStoreContext from '../../../context/pseudo-store-context';
+import Context from '../../../context/context';
 import { StyledButton, StyledControlsContainer } from '../../../styles/styles';
 
-const charControls = props => {
-  const pseudoStoreContext = (useContext(PseudoStoreContext));
+const charControls = () => {
+  const context = (useContext(Context));
   const save = false;
   const clear = true;
 
   return (
     <StyledControlsContainer>
       <StyledButton
-        onClick={pseudoStoreContext.saveInput}
+        onClick={context.saveInput}
         backgroundColor={save}
         >
           SAVE ITEM
       </StyledButton>
       <StyledButton
-        onClick={pseudoStoreContext.clearInput}
+        onClick={context.clearInput}
         backgroundColor={clear}
         >
           CLEAR LIST

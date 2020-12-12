@@ -3,10 +3,10 @@ import StringsList from './StringsList/StringsList';
 import StringsListToggle from './StringsListToggle/StringsListToggle';
 import withMaterialSection from '../../hoc/withMaterialSection';
 import classes from '../../containers/App.css';
-import PseudoStoreContext from '../../context/pseudo-store-context';
+import Context from '../../context/context';
 
 class Strings extends PureComponent {
-  static contextType = PseudoStoreContext;
+  static contextType = Context;
 
   render() {
     return (

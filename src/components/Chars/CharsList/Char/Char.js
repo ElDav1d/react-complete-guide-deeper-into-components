@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { StyledLi } from '../../../../styles/styles';
-import PseudoStoreContext from '../../../../context/pseudo-store-context';
+import Context from '../../../../context/context';
 
 const char = props => {
-  const pseudoStoreContext = (useContext(PseudoStoreContext));
+  const context = (useContext(Context));
   return (
     <StyledLi
-      onClick={pseudoStoreContext.deleteChar}
+      onClick={context.deleteChar}
     >
       {props.char}
     </StyledLi>

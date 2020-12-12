@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import PseudoStoreContext from '../../../context/pseudo-store-context';
+import Context from '../../../context/context';
 import Char from './Char/Char';
 
 const charList = () => {
-  const pseudoStoreContext = (useContext(PseudoStoreContext));
+  const context = (useContext(Context));
   return (
     <ul>
-      {pseudoStoreContext.userInput.split('').map((char, index) => {
+      {context.userInput.split('').map((char, index) => {
         return (
           <Char
             char={char}

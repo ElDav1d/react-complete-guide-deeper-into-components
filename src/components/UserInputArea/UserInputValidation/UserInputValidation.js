@@ -1,10 +1,13 @@
 import React, { useContext } from 'react';
-import PseudoStoreContext from '../../../context/pseudo-store-context';
+import Context from '../../../context/context';
 
 const validation = () => {
-  const pseudoStoreContext = (useContext(PseudoStoreContext));
+  const context = (useContext(Context));
+  const validationText = context.userInput.length < 5 ? 'Text too short' : 'Text long enough';
   return (
-    <h2>{pseudoStoreContext.userInput.length < 5 ? 'Text too short' : 'Text long enough'}</h2>
+    <h2>
+      {validationText}
+    </h2>
   )
 };
 

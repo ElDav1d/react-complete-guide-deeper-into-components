@@ -13,5 +13,4 @@ const userInputArea = () => (
   </React.Fragment>
 );
 
-
-export default withMaterialSection(userInputArea, classes.AppMaterialCard);
+export default React.memo(withMaterialSection(userInputArea, classes.AppMaterialCard));

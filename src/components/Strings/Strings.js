@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import ShowStringsButton from './ShowStringsButton/ShowStringsButton';
 import String from  './String/String';
-import withMaterialUl from '../../hoc/withMaterialUl';
+import withMaterialSection from '../../hoc/withMaterialSection';
 import classes from '../../containers/App.css';
 import PseudoStoreContext from '../../context/pseudo-store-context';
 
@@ -32,4 +32,4 @@ class Strings extends PureComponent {
   }
 }
 
-export default withMaterialUl(Strings, classes.AppMaterialUl);
+export default withMaterialSection(Strings, classes.AppMaterialCard);

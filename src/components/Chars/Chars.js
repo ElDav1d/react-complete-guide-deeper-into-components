@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import Char from './Char/Char';
 import CharsControls from './CharsControls/CharsControls';
-import withMaterialUl from '../../hoc/withMaterialUl';
+import withMaterialSection from '../../hoc/withMaterialSection';
 import classes from '../../containers/App.css';
 import PseudoStoreContext from '../../context/pseudo-store-context';
 
@@ -29,4 +29,4 @@ class Chars extends PureComponent {
   }
 }
 
-export default withMaterialUl(Chars, classes.AppMaterialUl);
+export default withMaterialSection(Chars, classes.AppMaterialCard);

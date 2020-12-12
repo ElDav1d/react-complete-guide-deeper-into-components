@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import UserInputForm from '../components/UserInputForm/UserInputForm';
-import Validation from '../components/Validation/Validation';
+import UserInputArea from '../components/UserInputArea/UserInputArea';
 import Chars from '../components/Chars/Chars';
 import Strings from '../components/Strings/Strings';
 import PseudoStoreContext from '../context/pseudo-store-context';
@@ -49,6 +48,10 @@ class App extends Component {
     })
   }
 
+  componentDidUpdate () {
+    console.log('[APP] DidUpdate');
+  }
+
   render() {
     const textLength = this.state.userInput.length;
     const stringsLength = this.state.savedStrings.length;
@@ -69,14 +72,9 @@ class App extends Component {
       >
         <div className={classes.App}>
           <h1>LET'S GO</h1>
-          <UserInputForm />
-          <h3>
-            Text's length is {textLength}
-          </h3> 
-          <Validation 
-            textLength={textLength}/>
-            {textLength ? <Chars /> : null}
-            {stringsLength ? <Strings /> : null}
+          <UserInputArea />
+          {textLength ? <Chars /> : null}
+          {stringsLength ? <Strings /> : null}
         </div>
       </PseudoStoreContext.Provider>
     );

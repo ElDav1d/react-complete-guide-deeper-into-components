@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useRef } from 'react';
-import { StyledLabel } from '../../styles/styles';
-import PseudoStoreContext from '../../context/pseudo-store-context'
+import { StyledLabel } from '../../../styles/styles';
+import PseudoStoreContext from '../../../context/pseudo-store-context';
  
 const userInputForm = () => {
   const inputFocusRef = useRef(null);

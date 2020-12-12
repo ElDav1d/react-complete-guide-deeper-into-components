@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.App ul {
+  margin: 0;
+  padding: 0;
+}
+
 .AppMaterialCard {
   padding: 1rem;
   margin: 1rem auto;

@@ -13,7 +13,7 @@ const materialButtonBase = css`
   &:active {
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.65);
   }
-`
+`;
 
 export const StyledLi = styled.li`
   ${materialButtonBase};
@@ -38,10 +38,10 @@ export const StyledControlsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 15rem;
-  margin: auto;
-`
+  margin: 1rem auto;
+`;
 
 export const StyledLabel = styled.label`
   display: block;
   margin-bottom: 1rem;
-`
+`;

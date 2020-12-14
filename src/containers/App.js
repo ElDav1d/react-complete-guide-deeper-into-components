@@ -4,6 +4,7 @@ import UserInputArea from '../components/UserInputArea/UserInputArea';
 import Chars from '../components/Chars/Chars';
 import CharsControls from '../components/Chars/CharsControls/CharsControls';
 import Strings from '../components/Strings/Strings';
+import StringsListToggle from '../components/Strings/StringsListToggle/StringsListToggle';
 import Context from '../context/context';
 
 class App extends Component {
@@ -27,7 +28,11 @@ class App extends Component {
   deleteStringHandler = (stringIndex) => {
     const newStringsArray = this.state.savedStrings;
     newStringsArray.splice(stringIndex, 1);
-    this.setState({savedStrings: newStringsArray})
+    const hasStrings = newStringsArray.length;
+    this.setState({
+      savedStrings: newStringsArray,
+      showStrings: hasStrings
+    })
   }
 
   clearInputHandler = () => {
@@ -39,7 +44,8 @@ class App extends Component {
     newSavedStrings.push(this.state.userInput);
     this.setState({
       userInput: '',
-      savedStrings: newSavedStrings
+      savedStrings: newSavedStrings,
+      showStrings: true
     })
   }
 
@@ -56,8 +62,8 @@ class App extends Component {
         clear={this.clearInputHandler}
       />
     );
-    
-    let chars = null
+
+    let chars = null;
     const hasChars =  !!this.state.userInput;
 
     if (hasChars) {
@@ -69,7 +75,24 @@ class App extends Component {
       )
     }
 
-    const stringsLength = this.state.savedStrings.length;
+    const stringsToggle = (
+      <StringsListToggle 
+        toggleList={this.showSavedStringsHandler}
+        showStrings={this.state.showStrings}
+      />
+    );
+
+    let strings = null;
+    
+    if (this.state.savedStrings.length > 0) {
+      strings = (
+        <Strings
+          toggle={stringsToggle}
+          show={this.state.showStrings}
+        />
+      )
+    }
+
     return (
       <Context.Provider
         value={{
@@ -86,7 +109,7 @@ class App extends Component {
           <h1>LET'S GO</h1>
           <UserInputArea />
           {chars}
-          {stringsLength ? <Strings /> : null}
+          {strings}
         </div>
       </Context.Provider>
     );

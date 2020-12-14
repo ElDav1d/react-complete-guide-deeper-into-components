@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Context from '../../../context/context';
 import Char from './Char/Char';
 
-const charList = () => {
+const charsList = () => {
   const context = (useContext(Context));
   return (
     <ul>
@@ -18,4 +18,4 @@ const charList = () => {
   );
 };
 
-export default charList;
+export default charsList;

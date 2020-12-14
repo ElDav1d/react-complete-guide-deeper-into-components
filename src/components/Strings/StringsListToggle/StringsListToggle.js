@@ -1,22 +1,19 @@
-import React, { useContext } from 'react';
-import Context from '../../../context/context';
+import React from 'react';
 import { StyledButton } from '../../../styles/styles';
 
-const showStringsButton = () => {
-  const context = (useContext(Context));
-  const showStrings = context.showStrings;
-
+const showStringsButton = props => {
   let buttonText = 'Show';
-  if (showStrings) {buttonText = 'Hide'};
+  if (props.showStrings) {buttonText = 'Hide'};
 
+  console.log('[STRINGTOGGLE] render');
   return (
     <StyledButton
-      onClick={context.showSavedStrings}
-      backgroundColor={showStrings}
-      >
-        {buttonText}
+      onClick={props.toggleList}
+      backgroundColor={props.showStrings}
+    >
+      {buttonText}
     </StyledButton>
   )
 }
 
-export default showStringsButton;
+export default React.memo(showStringsButton);

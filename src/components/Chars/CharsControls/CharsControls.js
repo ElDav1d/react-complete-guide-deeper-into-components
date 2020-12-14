@@ -1,22 +1,20 @@
-import React, {useContext} from 'react';
-import Context from '../../../context/context';
+import React from 'react';
 import { StyledButton, StyledControlsContainer } from '../../../styles/styles';
 
-const charControls = () => {
-  const context = (useContext(Context));
+const charControls = props => {
   const save = false;
   const clear = true;
-
+  console.log('CONTROLS render');
   return (
     <StyledControlsContainer>
       <StyledButton
-        onClick={context.saveInput}
+        onClick={props.save}
         backgroundColor={save}
         >
           SAVE ITEM
       </StyledButton>
       <StyledButton
-        onClick={context.clearInput}
+        onClick={props.clear}
         backgroundColor={clear}
         >
           CLEAR LIST
@@ -25,4 +23,4 @@ const charControls = () => {
   )
 }
 
-export default charControls;
+export default React.memo(charControls);

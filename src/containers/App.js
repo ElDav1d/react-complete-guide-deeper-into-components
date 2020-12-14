@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classes from './App.css';
 import UserInputArea from '../components/UserInputArea/UserInputArea';
 import Chars from '../components/Chars/Chars';
+import CharsControls from '../components/Chars/CharsControls/CharsControls';
 import Strings from '../components/Strings/Strings';
 import Context from '../context/context';
 
@@ -48,11 +49,13 @@ class App extends Component {
     })
   }
 
-  componentDidUpdate () {
-    console.log('[APP] DidUpdate');
-  }
-
   render() {
+    const charControls = (
+      <CharsControls
+        save={this.saveInputHandler}
+        clear={this.clearInputHandler}
+      />
+    );
     const textLength = this.state.userInput.length;
     const stringsLength = this.state.savedStrings.length;
 
@@ -63,8 +66,6 @@ class App extends Component {
           savedStrings: this.state.savedStrings,
           showStrings: this.state.showStrings,
           inputChange: this.inputChangeHandler,
-          clearInput: this.clearInputHandler,
-          saveInput: this.saveInputHandler,
           showSavedStrings: this.showSavedStringsHandler,
           deleteChar: this.deleteCharHandler,
           deleteString: this.deleteStringHandler
@@ -73,7 +74,7 @@ class App extends Component {
         <div className={classes.App}>
           <h1>LET'S GO</h1>
           <UserInputArea />
-          {textLength ? <Chars /> : null}
+          {textLength ? <Chars controls={charControls}/> : null}
           {stringsLength ? <Strings /> : null}
         </div>
       </Context.Provider>

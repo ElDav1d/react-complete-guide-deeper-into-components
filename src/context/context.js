@@ -5,8 +5,6 @@ const Context = React.createContext({
   savedStrings: [],
   showStrings: false,
   inputChange: () => {},
-  clearInput: () => {},
-  saveInput: () => {},
   showSavedStrings: () => {},
   deleteChar: () => {},
   deleteString: () => {},

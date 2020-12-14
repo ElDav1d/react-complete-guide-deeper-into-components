@@ -1,6 +1,6 @@
 import React from 'react';
 
-const pseudoStoreContext = React.createContext({
+const Context = React.createContext({
   userInput: '',
   savedStrings: [],
   showStrings: false,
@@ -12,4 +12,4 @@ const pseudoStoreContext = React.createContext({
   deleteString: () => {},
 })
 
-export default pseudoStoreContext;
+export default Context;

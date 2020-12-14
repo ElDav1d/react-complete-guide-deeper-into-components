@@ -50,15 +50,26 @@ class App extends Component {
   }
 
   render() {
-    const charControls = (
+    const charsControls = (
       <CharsControls
         save={this.saveInputHandler}
         clear={this.clearInputHandler}
       />
     );
-    const textLength = this.state.userInput.length;
-    const stringsLength = this.state.savedStrings.length;
+    
+    let chars = null
+    const hasChars =  !!this.state.userInput;
 
+    if (hasChars) {
+      chars = (
+        <Chars
+          controls={charsControls}
+          show={hasChars}
+        />
+      )
+    }
+
+    const stringsLength = this.state.savedStrings.length;
     return (
       <Context.Provider
         value={{
@@ -74,7 +85,7 @@ class App extends Component {
         <div className={classes.App}>
           <h1>LET'S GO</h1>
           <UserInputArea />
-          {textLength ? <Chars controls={charControls}/> : null}
+          {chars}
           {stringsLength ? <Strings /> : null}
         </div>
       </Context.Provider>
